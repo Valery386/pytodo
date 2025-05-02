@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/todos.css' %}">
+{% endblock %}
+
+{% block title %} Todo List {% endblock %}
+
+{% block content %}
+    <div>
+        <div class="todo-title-container">
+            <h1>Todo List</h1>
+        </div>
+
+    </div>
+{% endblock %}

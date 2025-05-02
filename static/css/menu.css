@@ -1,0 +1,29 @@
+.todo-menu {
+    display: flex;
+    justify-content: end;
+    padding: 0 2rem;
+}
+
+.todo-menu-item-container {
+    list-style: none;
+    display: flex;
+}
+
+.todo-menu-item {
+    background-color: lightblue;
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin: 0 0.5rem;
+}
+
+.todo-menu-item:hover {
+    background-color: lightgrey;
+}
+
+.todo-menu-item > a {
+    text-decoration: none;
+}
+
+.todo-title-container {
+
+}
