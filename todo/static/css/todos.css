@@ -37,12 +37,14 @@
     }
 }
 
-.todo-action {
-    cursor: pointer;
-    text-decoration: none;
-    padding: 0 0.5rem;
+.todo-actions {
+    display: flex;
+    justify-content: center;
+}
 
-    .icon-edit, .icon-delete {
-        color: var(--primary-color);
-    }
+.todo-action {
+    all: unset;
+    cursor: pointer;
+    color: var(--primary-color);
+    margin: 0 0.5rem;
 }

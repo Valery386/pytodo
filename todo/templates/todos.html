@@ -19,6 +19,7 @@
                 <th>Title</th>
                 <th>Actions</th>
             </tr>
+
             {% for todo in todos %}
                 <tr class="todo-table-row">
                     <td>
@@ -28,12 +29,19 @@
                         <span>{{ todo.title }}</span>
                     </td>
                     <td>
-                        <a class="todo-action" href="{% url 'edit-todo' todo.id %}">
-                            <i class="fa-solid fa-pencil icon-edit"></i>
-                        </a>
-                        <a class="todo-action" href="{% url 'delete-todo' todo.id %}">
-                            <i class="fa-solid fa-trash icon-delete"></i>
-                        </a>
+                        <div class="todo-actions">
+                            <a class="todo-action" href="{% url 'todo' todo.id %}">
+                                <i class="fa-solid fa-pencil icon-edit"></i>
+                            </a>
+                            <form method="post" action="{% url 'todo' todo.id %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="_method" value="DELETE"/>
+                                <input type="hidden" name="_todo_id" value="{{ todo.id }}"/>
+                                <button class="todo-action" type="submit">
+                                    <i class="fa-solid fa-trash icon-delete"></i>
+                                </button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
                 </tbody>

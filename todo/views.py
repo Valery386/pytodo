@@ -1,5 +1,5 @@
 from django.http import HttpResponseBadRequest, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import View
 
 from .forms import TodoCreateForm
@@ -26,13 +26,16 @@ class ToDoCreateView(View):
         return HttpResponseBadRequest("Form is not valid")
 
 
-class ToDoDeleteView(View):
+class ToDoView(View):
     def get(self, request, id):
         print("id", id)
         return HttpResponseRedirect("/")
 
+    def post(self, request, id):
+        method = request.POST.get('_method')
+        todo = get_object_or_404(ToDo, id=id)
 
-class ToDoEditView(View):
-    def get(self, request, id):
-        print("id", id)
+        if method.upper() == 'DELETE':
+            todo.delete()
+
         return HttpResponseRedirect("/")
