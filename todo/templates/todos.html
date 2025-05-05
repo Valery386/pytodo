@@ -28,8 +28,12 @@
                         <span>{{ todo.title }}</span>
                     </td>
                     <td>
-                        <a href="{% url 'delete-todo' todo.id %}"><i class="fa-solid fa-trash"></i></a>
-                        <a href="{% url 'edit-todo' todo.id %}">Edit</a>
+                        <a class="todo-action" href="{% url 'edit-todo' todo.id %}">
+                            <i class="fa-solid fa-pencil icon-edit"></i>
+                        </a>
+                        <a class="todo-action" href="{% url 'delete-todo' todo.id %}">
+                            <i class="fa-solid fa-trash icon-delete"></i>
+                        </a>
                     </td>
                 </tr>
                 </tbody>

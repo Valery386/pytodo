@@ -14,13 +14,11 @@
     padding: 0.5rem;
     border-radius: 5px;
     margin: 0 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--text-color);
 
     &:hover {
-        background-color: lightgreen;
-    }
-
-    a {
-        text-decoration: none;
-        color: black;
+        background-color: var(--primary-color);
     }
 }

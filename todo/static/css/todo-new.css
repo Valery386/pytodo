@@ -14,15 +14,16 @@ label {
     display: flex;
     justify-content: center;
     margin-top: 1rem;
-    
+
     input[type=submit] {
         width: 200px;
         padding: 0.5rem;
         background-color: lightgray;
+        color: var(--text-color);
         cursor: pointer;
 
         &:hover {
-            background-color: lightgreen;
+            background-color: var(--primary-color);
         }
     }
 }

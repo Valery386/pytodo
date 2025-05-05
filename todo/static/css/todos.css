@@ -36,3 +36,13 @@
         text-align: center;
     }
 }
+
+.todo-action {
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0 0.5rem;
+
+    .icon-edit, .icon-delete {
+        color: var(--primary-color);
+    }
+}
