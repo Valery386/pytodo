@@ -1,0 +1,29 @@
+label {
+    font-weight: bold;
+}
+
+.form-control {
+    margin-bottom: 0.5rem;
+}
+
+.todo-new-title-container {
+    text-align: center;
+}
+
+.todo-new-submit-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    
+    input[type=submit] {
+        width: 200px;
+        padding: 0.5rem;
+        background-color: lightgray;
+        cursor: pointer;
+
+        &:hover {
+            background-color: lightgreen;
+        }
+    }
+}
+

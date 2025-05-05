@@ -1,3 +1,38 @@
-.todo-title-container > h1 {
-    text-align: center;
+.todo-title-container {
+    h1 {
+        text-align: center;
+    }
+}
+
+.todo-list {
+    display: flex;
+    justify-content: center;
+}
+
+.todo-table {
+    width: 80%;
+    border-collapse: collapse;
+
+    th {
+        height: 25px;
+    }
+
+    td {
+        height: 25px;
+    }
+}
+
+.todo-table-header {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+.todo-table-row {
+    td:first-child {
+        text-align: center;
+    }
+
+    td:last-child {
+        text-align: center;
+    }
 }

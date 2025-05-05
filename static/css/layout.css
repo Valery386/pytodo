@@ -1,5 +1,21 @@
+:root {
+    --primary-color: #DE483A;
+    --text-color: white;
+}
+
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url('../roboto-font/Roboto-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: url('../roboto-font/Roboto-Bold.ttf');
+}
+
 body {
     margin: 0;
+    font-family: 'Roboto-Regular', sans-serif;
 }
 
 .content {

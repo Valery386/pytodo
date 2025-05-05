@@ -1,18 +1,38 @@
+from django.http import HttpResponseBadRequest, HttpResponseRedirect
 from django.shortcuts import render
 from django.views import View
 
-from todo.forms import TodoForm
+from .forms import TodoCreateForm
+from .models import ToDo
 
 
 # Create your views here.
-class ToDoView(View):
+class ToDoListView(View):
     def get(self, request):
-        return render(request, 'todos.html')
+        toDos = ToDo.objects.filter(completed=False)
+        return render(request, 'todos.html', {'todos': toDos})
 
 
 class ToDoCreateView(View):
     def get(self, request):
-        form = TodoForm()
-        return render(request, template_name='new-todo.html', context={'form': form})
+        form = TodoCreateForm()
+        return render(request, 'new-todo.html', {'form': form})
 
-    # def post(self, request):
+    def post(self, request):
+        form = TodoCreateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'todos.html')
+        return HttpResponseBadRequest("Form is not valid")
+
+
+class ToDoDeleteView(View):
+    def get(self, request, id):
+        print("id", id)
+        return HttpResponseRedirect("/")
+
+
+class ToDoEditView(View):
+    def get(self, request, id):
+        print("id", id)
+        return HttpResponseRedirect("/")

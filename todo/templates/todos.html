@@ -7,10 +7,33 @@
 {% block title %} Todo List {% endblock %}
 
 {% block content %}
-    <div>
-        <div class="todo-title-container">
-            <h1>Todo List</h1>
-        </div>
+    <div class="todo-title-container">
+        <h1>Todo List</h1>
+    </div>
 
+    <div class="todo-list">
+        <table class="todo-table">
+            <tbody>
+            <tr class="todo-table-header">
+                <th>Complete</th>
+                <th>Title</th>
+                <th>Actions</th>
+            </tr>
+            {% for todo in todos %}
+                <tr class="todo-table-row">
+                    <td>
+                        <input type="checkbox" value="{{ todo.completed }}"/>
+                    </td>
+                    <td>
+                        <span>{{ todo.title }}</span>
+                    </td>
+                    <td>
+                        <a href="{% url 'delete-todo' todo.id %}"><i class="fa-solid fa-trash"></i></a>
+                        <a href="{% url 'edit-todo' todo.id %}">Edit</a>
+                    </td>
+                </tr>
+                </tbody>
+            {% endfor %}
+        </table>
     </div>
 {% endblock %}
