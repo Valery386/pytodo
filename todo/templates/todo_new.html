@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/todo_new.css' %}">
+{% endblock %}
+
+{% block title %}New ToDo{% endblock %}
+
+{% block content %}
+    <div class="todo-new-title-container">
+        <h1>New ToDo</h1>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <div class="todo-new-submit-container">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+{% endblock %}

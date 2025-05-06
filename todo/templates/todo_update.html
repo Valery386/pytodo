@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/todo_update.css' %}">
+{% endblock %}
+
+{% block title %}Update ToDo{% endblock %}
+
+{% block content %}
+    <div class="todo-update-title-container">
+        <h1>Update ToDo</h1>
+    </div>
+
+    <form method="post" action="{% url 'todo' todo.id %}">
+        {% csrf_token %}
+        {{ form }}
+        <div class="todo-update-submit-container">
+            <input type="hidden" name="_method" value="PUT">
+            <input type="submit" value="Update">
+        </div>
+    </form>
+{% endblock %}

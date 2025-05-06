@@ -13,20 +13,19 @@
 
     <div class="todo-list">
         <table class="todo-table">
-            <tbody>
             <tr class="todo-table-header">
                 <th>Complete</th>
                 <th>Title</th>
                 <th>Actions</th>
             </tr>
-
+            <tbody class="todo-table-body">
             {% for todo in todos %}
                 <tr class="todo-table-row">
                     <td>
                         <form method="post" action="{% url 'todo' todo.id %}">
                             {% csrf_token %}
                             <input type="hidden" name="_method" value="PATCH"/>
-                            <input type="checkbox"
+                            <input class="todo-checkbox" type="checkbox"
                                    {% if todo.completed %}checked{% endif %}
                                    name="_completed"
                                    onchange='this.form.submit()'/>
@@ -51,8 +50,8 @@
                         </div>
                     </td>
                 </tr>
-                </tbody>
             {% endfor %}
+            </tbody>
         </table>
     </div>
 {% endblock %}

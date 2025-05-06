@@ -27,13 +27,27 @@
     color: var(--text-color);
 }
 
+.todo-table-body {
+    tr:first-child {
+        border-top: none;
+    }
+}
+
 .todo-table-row {
+    height: 40px;
+    border-top: 1px solid lightgray;
+    margin: 0.5rem 0;
+
     td:first-child {
         text-align: center;
     }
 
     td:last-child {
         text-align: center;
+    }
+
+    &:hover {
+        background-color: var(--secondary-color);
     }
 }
 
@@ -47,4 +61,10 @@
     cursor: pointer;
     color: var(--primary-color);
     margin: 0 0.5rem;
+}
+
+input[type=checkbox] {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
 }

@@ -1,0 +1,29 @@
+label {
+    font-weight: bold;
+}
+
+.form-control {
+    margin-bottom: 0.5rem;
+}
+
+.todo-update-title-container {
+    text-align: center;
+}
+
+.todo-update-submit-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+
+    input[type=submit] {
+        width: 200px;
+        background-color: lightgray;
+        color: var(--text-color);
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--primary-color);
+        }
+    }
+}
+
