@@ -22,7 +22,8 @@ class ToDoCreateView(View):
         form = TodoCreateForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'todos.html')
+            return HttpResponseRedirect("/")
+
         return HttpResponseBadRequest("Form is not valid")
 
 
@@ -37,5 +38,10 @@ class ToDoView(View):
 
         if method.upper() == 'DELETE':
             todo.delete()
+
+        if method.upper() == 'PATCH':
+            completed = request.POST.get('_completed').lower() == 'on'
+            todo.completed = completed
+            todo.save()
 
         return HttpResponseRedirect("/")

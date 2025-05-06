@@ -23,7 +23,14 @@
             {% for todo in todos %}
                 <tr class="todo-table-row">
                     <td>
-                        <input type="checkbox" value="{{ todo.completed }}"/>
+                        <form method="post" action="{% url 'todo' todo.id %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="_method" value="PATCH"/>
+                            <input type="checkbox"
+                                   {% if todo.completed %}checked{% endif %}
+                                   name="_completed"
+                                   onchange='this.form.submit()'/>
+                        </form>
                     </td>
                     <td>
                         <span>{{ todo.title }}</span>
