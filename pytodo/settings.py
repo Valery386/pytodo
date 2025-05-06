@@ -120,7 +120,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     Path.joinpath(BASE_DIR, "static"),
-    Path.joinpath(BASE_DIR, "/todo/static"),
+    Path.joinpath(BASE_DIR, "todo", "static"),
 ]
 
 # Default primary key field type
