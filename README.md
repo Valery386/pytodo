@@ -45,22 +45,91 @@ user-friendly interface to create, update, delete, and view tasks.
 
 ## Configuration
 
-Create a `.env` file in the project root for environment variables. Example:
+Create a `.env` file in the project root for environment variables. Example: see `.env-examples`
 
 ```
 # Django settings
 env DEBUG=True 
 SECRET_KEY=<your-secret-key> 
 ALLOWED_HOSTS=localhost,127.0.0.1
-
-# Database settings
-DB_ENGINE=django.db.backends.postgresql
-DB_NAME=<DB-name>
-DB_USER=<your-user>
-DB_PASSWORD=<your-password>
-DB_HOST=localhost
-DB_PORT=5432
 ```
+
+## Setting Up the Project with Podman
+
+### Prerequisites
+
+1. **Install Podman**: Ensure Podman is installed on your system. You can refer to
+   the [Podman installation guide](https://podman.io/getting-started/installation) for instructions.
+2. **Install podman-compose**: Install `podman-compose` to manage multi-container setups using Podman. You can install
+   it using pip:
+   ```bash
+   pip install podman-compose
+   ```
+
+3. **Environment Variables**: Create a `.env` file in the project root with the following variables to configure the
+   database:
+   ```env
+   # Database settings
+   DB_ENGINE=django.db.backends.postgresql
+   DB_NAME=<DB-name>
+   DB_USER=<your-user>
+   DB_PASSWORD=<your-password>
+   DB_HOST=localhost
+   DB_PORT=<port_you_want_to_expose_postgres_on>
+   ```
+
+For example:
+
+```env 
+   DB_ENGINE=django.db.backends.postgresql
+   DB_NAME=pytodo
+   DB_USER=postgres
+   DB_PASSWORD=your-db-password-here
+   DB_HOST=db
+   DB_PORT=5432
+```
+
+### Steps to Set Up
+
+1. **Launch Podman Containers**:
+   Run the following command to start the containers defined in `podman-compose.yml`:
+   ```bash
+   podman-compose up -d
+   ```
+
+2. **Verify Containers**:
+   Use the following command to verify that the containers are running:
+   ```bash
+   podman ps
+   ```
+
+3. **Apply Migrations**:
+   Once the database is running, apply Django migrations to set up the database schema:
+   ```bash
+   pipenv run python manage.py migrate
+   ```
+
+4. **Run the Development Server**:
+   Start the Django development server:
+   ```bash
+   pipenv run python manage.py runserver
+   ```
+
+The application should now be running and can be accessed at `http://127.0.0.1:8000`.
+
+### Stopping and Removing Containers
+
+To stop and remove the containers, run:
+
+```
+bash podman-compose down
+```
+
+### Notes
+
+- The database container uses the official `postgres:17` image and mounts a persistent volume to store data (
+  `postgres_data`).
+- Make sure `podman-compose` is pointing to the correct context for Podman.
 
 ## App Structure
 
